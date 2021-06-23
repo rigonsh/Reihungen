@@ -59,7 +59,7 @@ public class Balkendiagramm_CSV extends PApplet
         //------------
         // TODO
         //------------
-
+        
         // Fülle die Arrays mit Werten aus der Tabelle
         // Mit csv.getInt(zeilennummer, "Name der Spalte") oder csv.getInt(zeilennummer, spaltennummer)
         // bekommt man die Werte der Tabelleneinträge als Integer-Wert
@@ -68,14 +68,15 @@ public class Balkendiagramm_CSV extends PApplet
         //------------
         // TODO
         //------------  
-    }
+        
+     }
 
     public void zeichneBalken() {
 
         clear();
 
         // Überschrift
-        fill(255,255,255);
+        
         textFont(grosseSchrift);
         text("Punkte", 2, 20);
         textFont(kleineSchrift);  

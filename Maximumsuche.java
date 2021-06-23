@@ -19,6 +19,7 @@ public class Maximumsuche extends PApplet
     // Liste mit allen Werten //<>//
     int[]    zahlen;    
     String[] namen;
+    int maximum;
 
     // Hilfsvariablen für die Suche
     // -------------------------------------------------------------------
@@ -26,7 +27,9 @@ public class Maximumsuche extends PApplet
     //       untersuchtes Element
     // -------------------------------------------------------------------
     // aktuell groesstes Element
+    int max;
     // aktuell untersuchtes Element
+    int akt;
     public int verzoegerung=1000;  // Geschwindigkeit der Ausführung
 
     // Schriften
@@ -116,6 +119,7 @@ public class Maximumsuche extends PApplet
     public void zeichneBalken() {
 
         clear();
+        background(255);
 
         // Überschrift
         fill(255,255,255);
@@ -133,6 +137,11 @@ public class Maximumsuche extends PApplet
                 // ToDo: Falls i dem aktuell untersuchtem oder der aktuellen Maximal-
                 //       position entspricht, muss eine andere Farbe gewählt werden
                 // ----------------------------------------------------------------------
+                if (i==max) {
+                    
+                    fill(250, 0, 0);
+                }
+                 
 
                 // Balkendiagramm zeichnen
                 if (zahlen[i]>=0) rect(120, 25+i*15, zahlen[i]+1, 13);
@@ -150,22 +159,36 @@ public class Maximumsuche extends PApplet
      *
      * @return index des Maximums
      */
-    public int maximumsuche() {
+      public int maximumsuche() {
         // ------------------------------------------------------------------------------
         // ToDO: Implementiere die Maximumsuche, füge nach jeder Veränderung der
         //       Position des aktuellen Elements oder der Position des momentanen Maximums
         //       die Befehle: redraw(); und delay(verzoegerung); ein.
         //       Als Ergebnis soll die Methode die Position des Maximums zurückgeben
         //       Kommentiere die Maximumsuche
-        // ------------------------------------------------------------------------------
-        //<>//
-        return -1;
+        maximum=0  ;  
+        for( int  akt=0 ; akt < zahlen.length ; akt++) {
+        
+        
+        if (zahlen[akt] > zahlen [maximum] ) {
+            maximum = akt;
+            redraw();
+            delay(verzoegerung);
+            
+        }
+        
     }
+    
+    // ------------------------------------------------------------------------------
+        //<>//
+    return maximum;
+}
+   
 
-    /**
+ /**
      * Mit der main()-Methode wird das Programm gestartet.
      *
-     */    
+     */   
     public static void main(String _args[]){ 
                 PApplet.main(Maximumsuche.class, _args);
     }
