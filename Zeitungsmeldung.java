@@ -89,19 +89,27 @@ public class Zeitungsmeldung extends PApplet
         textFont(kleineSchrift); 
         fill(240);
 
-        int anzahlSpieler   = 0;
-        int anzahlSpiele    = 0;
+        int anzahlSpieler   = namen.length;
+        int anzahlSpiele    = punkte.length;
         int summe           = berechneSumme(punkte);
-        double durchschnitt = 0;
+        double durchschnitt = berechneDurchschnitt (punkte);
 
         text("Großartiges Ergebnis - Klasse XY nimmt an Binärwettbewerb teil.", 2, 60);
         text("Die Klasse XY hat beim diesjährigen Binärwettbewerb teilgenommen", 2, 82);
-        text("und ein großartiges Ergebnis erzielt. Die XX Schülerinnen und", 2, 94);
+        text("und ein großartiges Ergebnis erzielt. Die "+anzahlSpieler+"Schülerinnen und", 2, 94);
         text("Schüler der Klasse erreichten in "+anzahlSpiele+" Spielen eine Gesamtpunktzahl",2,106);
-        text("von "+summe+". Das ist ein Durchschnitt von XX.X pro Spiel.",2,118);
+        text("von "+summe+". Das ist ein Durchschnitt von"+durchschnitt+" XX.X pro Spiel.",2,118);
 
     }
-
+    
+    public double  berechneDurchschnitt(int[]zahlen){
+        
+        double Durchschnitt = berechneSumme(zahlen)/zahlen.length;
+        
+        return Durchschnitt;
+        
+    }   
+    
     public int berechneSumme(int[] zahlen) {
         int summe;
         int i;
@@ -111,7 +119,7 @@ public class Zeitungsmeldung extends PApplet
 
         // Alle Arrayelemente untersuchen
         for (i=0; i< zahlen.length; i++) {
-            summe = summe + i;
+            summe = summe + punkte [i];
         }
         // Gib die Summe zurück
         return i;
